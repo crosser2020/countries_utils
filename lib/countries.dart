@@ -28,15 +28,9 @@ class Countries {
   }
 
   static Country byCode(String code) {
-    Country country;
-    if (_countryData.countries
-            .firstWhere((c) => c.alpha2Code == code, orElse: () => null) !=
-        null) {
-      country = _countryData.countries.where((c) => c.alpha2Code == code).first;
-    } else {
-      country = _countryData.countries.first;
-    }
-
+    Country country = _countryData.countries.firstWhere(
+        (c) => c.alpha2Code == code,
+        orElse: () => _countryData.countries.first);
     return country;
   }
 
